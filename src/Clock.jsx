@@ -30,6 +30,7 @@ export default function Clock({
   minuteMarksLength = 6,
   minuteMarksWidth = 1,
   renderHourMarks = true,
+  renderHourHand = true,
   renderMinuteHand = true,
   renderMinuteMarks = true,
   renderNumbers,
@@ -97,6 +98,10 @@ export default function Clock({
   }
 
   function renderHourHandFn() {
+    if (!renderHourHand) {
+      return null;
+    }
+
     const angle = value
       ? getHours(value) * 30 + getMinutes(value) / 2 + getSeconds(value) / 600
       : 0;
